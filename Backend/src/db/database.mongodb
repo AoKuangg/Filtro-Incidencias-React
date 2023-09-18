@@ -1,0 +1,135 @@
+use("Incident_Campus");
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["Username", "Email", "Password", "Rol"],
+      properties: {
+        Username: {
+          bsonType: "string",
+          description: "Username es requerido y debe ser un string",
+        },
+        Email: {
+          bsonType: "string",
+          description: "El email es requerido y debe ser un string",
+        },
+        Password: {
+          bsonType: "string",
+          description: "La password es requerida y debe ser un string",
+        },
+        Rol: {
+          bsonType: "string",
+          description: "El rol es requerido y debe ser un string",
+        },
+      },
+    },
+  },
+});
+
+use("Incident_Campus");
+db.createCollection("devices", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["Name", "Code", "Site"],
+      properties: {
+        Name: {
+          bsonType: "string",
+          description: "El name es requerido y debe ser un string",
+        },
+        Code: {
+          bsonType: "string",
+          description: "El code es requerido y debe ser un string",
+        },
+        Site: {
+          bsonType: "string",
+          description: "El site es requerido y debe ser un string",
+        },
+      },
+    },
+  },
+});
+
+use("Incident_Campus");
+db.createCollection("incident", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["Site", "Tittle", "Description", "DateOfIncident", "Camper"],
+      properties: {
+        Site: {
+          bsonType: "string",
+          description: "Site is required and needs to be an string",
+        },
+        Tittle: {
+          bsonType: "string",
+          description: "Tittle is required and needs to be an string",
+        },
+        Description: {
+          bsonType: "string",
+          description: "Description is required and needs to be an string",
+        },
+        Severity: {
+          bsonType: "string",
+          description: "Severity needs to be an string",
+        },
+        Category: {
+          bsonType: "string",
+          description: "Category needs to be an string",
+        },
+        DateOfIncident: {
+          bsonType: "string",
+          description: "DateOfIncident is required and neesd to be an string",
+        },
+        Camper: {
+          bsonType: "object",
+          required: ["Username"],
+          properties: {
+            Username: {
+              bsonType: "string",
+              description: "Username is required",
+            },
+          },
+        },
+        Support: {
+          bsonType: "object",
+          required: ["Username", "Diagnosis", "Status"],
+          properties: {
+            Username: {
+              bsonType: "string",
+              description: "Username is required",
+            },
+            Diagnosis: {
+              bsonType: "string",
+              description: "Diagnosis is required",
+            },
+            Status: {
+              bsonType: "string",
+              description: "Status is required",
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+use("Incident_Campus");
+db.createCollection("Site", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["Area", "Place"],
+      properties: {
+        Area: {
+          bsonType: "string",
+          description: "Area is required",
+        },
+        Place: {
+          bsonType: "string",
+          description: "Place is required",
+        },
+      },
+    },
+  },
+});
