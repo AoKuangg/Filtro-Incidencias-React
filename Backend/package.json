@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon --quiet app.js"
+  },
+  "keywords": [],
+  "author": "AoKuangg",
+  "license": "ISC"
+}
