@@ -33,8 +33,6 @@
     "jose": "4.14.6",
     "mongodb": "6.1.0",
     "nodemon": "3.0.1",
-    "passport": "0.6.0",
-    "passport-http-bearer": "1.0.1",
     "postcss": "^8.4.30",
     "prop-types": "15.8.1",
     "tailwindcss": "^3.3.3",
