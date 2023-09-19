@@ -1,7 +1,7 @@
 import "dotenv/config";
 import Express from "express";
 import routesVersioning from "express-routes-versioning";
-import v1Routers from "./version/v1/index.js";
+import v1Routers from "./src/version/v1/index.js";
 
 const app = Express();
 const version = routesVersioning();
