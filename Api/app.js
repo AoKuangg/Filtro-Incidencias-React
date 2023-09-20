@@ -1,12 +1,13 @@
+console.clear();
 import "dotenv/config";
-import cors from "cors"
+import cors from "cors";
 import Express from "express";
 import routesVersioning from "express-routes-versioning";
 import v1Routers from "./src/version/v1/index.js";
 
 const app = Express();
 const version = routesVersioning();
-app.use(cors())
+app.use(cors());
 app.use(Express.json());
 
 app.use(
@@ -18,5 +19,5 @@ app.use(
 
 const config = JSON.parse(process.env.SERVER);
 app.listen(config, () => {
-  console.log(`http://${config.hostname}:${config.port}/`);
+  console.log(`http://${config.hostname}:${config.port}`);
 });
