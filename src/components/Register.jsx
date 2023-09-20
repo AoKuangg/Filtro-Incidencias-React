@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const SERVER = JSON.parse(import.meta.env.VITE_SERVER)
 export default function Register() {
   let redirect = useNavigate();
   const [Username, setUsername] = useState("");
@@ -23,7 +24,7 @@ export default function Register() {
     config.body = JSON.stringify({ Username, Email, Password, Rol });
     try {
       let result = await (
-        await fetch(`http://127.16.16.15:4550/auth/signUp`, config)
+        await fetch(`http://${SERVER.hostname}:${SERVER.port}/auth/signUp`, config)
       ).json();
 
       if (result.status === 200) {
