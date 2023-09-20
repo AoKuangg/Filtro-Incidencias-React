@@ -1,5 +1,9 @@
-import "dotenv/config";
+// import "dotenv/config";
 import { SignJWT, jwtVerify } from "jose";
+import { loadEnv } from "vite";
+
+const env = loadEnv("development", process.cwd(), "VITE")
+const JWT_KEY = env.VITE_JWT_KEY
 
 export const GenerateToken = async (info) => {
   const { _id, Username, Email, Rol } = info[0];
@@ -17,7 +21,7 @@ export const GenerateToken = async (info) => {
     })
     .setIssuedAt()
     .setExpirationTime("2h")
-    .sign(encoder.encode(process.env.PRIVATE_KEY));
+    .sign(encoder.encode(JWT_KEY));
 
   return jwt;
 };
@@ -30,7 +34,7 @@ export const ValidateToken = async (req, res, next) => {
     const encoder = new TextEncoder();
     req.auth = await jwtVerify(
       authorization,
-      encoder.encode(process.env.PRIVATE_KEY)
+      encoder.encode(JWT_KEY)
     );
     next();
   } catch (error) {

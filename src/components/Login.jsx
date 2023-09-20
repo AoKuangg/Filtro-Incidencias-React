@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+const SERVER = JSON.parse(import.meta.env.VITE_SERVER)
 export default function LogIn() {
   let redirect = useNavigate();
   const [Email, setEmail] = useState("");
@@ -21,7 +22,7 @@ export default function LogIn() {
     config.body = JSON.stringify({ Email, Password });
     try {
       let result = await (
-        await fetch(`http://127.16.16.15:4550/auth/signIn`, config)
+        await fetch(`http://${SERVER.hostname}:${SERVER.port}/auth/signIn`, config)
       ).json();
 
       //IF USER NOT FOUND
