@@ -1,5 +1,4 @@
 console.clear();
-// import "dotenv/config";
 import {  loadEnv } from "vite";
 import cors from "cors";
 import Express from "express";
@@ -21,10 +20,6 @@ app.use(
   })
 );
 
-const config = {
-  port: json.port,
-  hostname: json.hostname,
-};
-app.listen(config, () => {
-  console.log(`http://${config.hostname}:${config.port}`);
+app.listen(json.port, () => {
+  console.log(`http://${json.hostname}:${json.port}`);
 });
