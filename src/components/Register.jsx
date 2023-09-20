@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "dotenv/config";
-const server = JSON.parse(process.env.SERVER);
-
 
 export default function Register() {
   let redirect = useNavigate();
@@ -27,7 +24,7 @@ export default function Register() {
 
     try {
       let result = await (
-        await fetch(`http://${server.hostname}:${server.port}/auth/signUp`, config)
+        await fetch(`http://127.16.16.15:4550/auth/signUp`, config)
       ).json();
 
       if (result.status === 200) {
@@ -52,7 +49,7 @@ export default function Register() {
   return (
     <>
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden dark:bg-slate-800">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl dark:bg-slate-700">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md sm:max-w-xs md:max-w-lg lg:max-w-xl dark:bg-slate-700 ">
           <h1 className="text-3xl font-semibold text-center text-green-600 underline">
             Sign Up
           </h1>

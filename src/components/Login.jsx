@@ -1,7 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "dotenv/config";
-const server = JSON.parse(process.env.SERVER);
 
 export default function LogIn() {
   let redirect = useNavigate();
@@ -24,7 +22,7 @@ export default function LogIn() {
 
     try {
       let result = await (
-        (await fetch(`http://${server.hostname}:${server.port}/auth/signIn`, config))
+        (await fetch(`http://127.16.16.15:4550/auth/signIn`, config))
       ).json();
 
       //IF USER NOT FOUND
@@ -49,7 +47,7 @@ export default function LogIn() {
   return (
     <>
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden dark:bg-slate-800">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl dark:bg-slate-700">
+        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md sm:max-w-xs md:max-w-lg lg:max-w-xl dark:bg-slate-700">
           <h1 className="text-3xl font-semibold text-center text-green-600 underline">
             Sign in
           </h1>
