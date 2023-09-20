@@ -5,7 +5,7 @@ export const SignIn = async (info) => {
   let db = await ConnectDb();
   let collection = db.collection("users");
   let resultado = await collection
-    .find({ email: info.email, password: info.password })
+    .find({ Email: info.Email, Password: info.Password })
     .toArray();
 
   if (!resultado.length) return [];
@@ -24,7 +24,7 @@ export const SignUp = async (info) => {
   let db = await ConnectDb();
   let collection = db.collection("users");
 
-  let user = await collection.find({ email: info.email }).toArray();
+  let user = await collection.find({ Email: info.Email }).toArray();
 
   if (!user.length) {
     await collection.insertOne(info);

@@ -21,7 +21,6 @@ export default function Register() {
 
     config.method = "POST";
     config.body = JSON.stringify({ Username, Email, Password, Rol });
-
     try {
       let result = await (
         await fetch(`http://127.16.16.15:4550/auth/signUp`, config)

@@ -3,8 +3,8 @@ import { useState } from "react";
 
 export default function LogIn() {
   let redirect = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
 
   //FETCH CONFIG METHODS
   const config = {
@@ -18,11 +18,10 @@ export default function LogIn() {
     event.preventDefault();
 
     config.method = "POST";
-    config.body = JSON.stringify({ email, password });
-
+    config.body = JSON.stringify({ Email, Password });
     try {
       let result = await (
-        (await fetch(`http://127.16.16.15:4550/auth/signIn`, config))
+        await fetch(`http://127.16.16.15:4550/auth/signIn`, config)
       ).json();
 
       //IF USER NOT FOUND
@@ -58,7 +57,7 @@ export default function LogIn() {
               </label>
               <input
                 name="email"
-                value={email}
+                value={Email}
                 type="email"
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +70,7 @@ export default function LogIn() {
               </label>
               <input
                 name="password"
-                value={password}
+                value={Password}
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
