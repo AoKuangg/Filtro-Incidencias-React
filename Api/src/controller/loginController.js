@@ -31,29 +31,29 @@ export const SignIn = async (req, res) => {
 };
 
 export const singUp = async (req, res) => {
-    const { Username, Email, Password, Rol } = req.body;
-    try {
-      let user = await LoginService.SignUp(req.body);
-  
-      if (user) {
-        let data = await LoginService.SignIn({ Email, Password });
-        let jwt = await GenerateToken(data);
-        res.status(200).json({
-          status: 200,
-          message: "OK, registered",
-          data: data[0],
-          auth: jwt,
-        });
-      } else {
-        res.status(409).json({ status: 409, message: "user exists already" });
-      }
-    } catch (error) {
-      res.status(500).send({
-        status: 500,
-        errorInfo: {
-          message: "error",
-          error: error.message,
-        },
+  const { Username, Email, Password, Rol } = req.body;
+  try {
+    let user = await LoginService.SignUp(req.body);
+
+    if (user) {
+      let data = await LoginService.SignIn({ Email, Password });
+      let jwt = await GenerateToken(data);
+      res.status(200).json({
+        status: 200,
+        message: "OK, registered",
+        data: data[0],
+        auth: jwt,
       });
+    } else {
+      res.status(409).json({ status: 409, message: "user exists already" });
     }
-  };
+  } catch (error) {
+    res.status(500).send({
+      status: 500,
+      errorInfo: {
+        message: "error",
+        error: error.message,
+      },
+    });
+  }
+};
