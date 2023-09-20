@@ -1,29 +1,52 @@
 import { ConnectDb } from "../config/connectionDB";
 
+const db = await ConnectDb();
+const collection = db.collection("incident");
+
 export const GetAllReports = async () => {
-  let db = await ConnectDb();
-  let collection = db.collection("incident");
   let data = await collection.find({}).toArray();
   return data;
 };
 
 export const GetReportsbySite = async (SITE) => {
-  let db = await ConnectDb();
-  let collection = db.collection("incident");
   let data = await collection.find({ Site: SITE }).toArray();
   return data;
 };
 
 export const GetReportByCamper = async (Camper) => {
-    let db = await ConnectDb();
-    let collection = db.collection("incident");
-    let data = await collection.find({"Camper.Username":Camper}).toArray();
-    return data; 
+  let data = await collection.find({ "Camper.Username": Camper }).toArray();
+  return data;
 };
 
-export const GetReportByDateOfIncident= async (DATE) => {
-    let db = await ConnectDb();
-    let collection = db.collection("incident");
-    let data = await collection.find({ DateOfIncident: DATE }).toArray();
-    return data; 
+export const GetReportByDateOfIncident = async (DATE) => {
+  let data = await collection.find({ DateOfIncident: DATE }).toArray();
+  return data;
+};
+
+export const GetReportBySeverity = async (SEVERITY) => {
+  let data = await collection.find({ Severity: SEVERITY }).toArray();
+  return data;
+};
+
+export const GetReportByCategory = async (CATEGORY) => {
+  let data = await collection.find({ Category: CATEGORY }).toArray();
+  return data;
+};
+
+
+export const ModifyReport = async (modify) => {
+  const Fil = {
+    Tittle: modify.Tittle,
+  };
+  const updata = {
+    $set:{
+      Severity: modify.Severity,
+      Support:{
+        Username: modify.Support.Username,
+      },
+      Category: modify.Category,
+    }
+  };
+  let data = await collection.updateOne(Fil, updata);
+  return data;
 };
