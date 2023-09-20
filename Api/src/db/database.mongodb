@@ -7,43 +7,19 @@ db.createCollection("users", {
       properties: {
         Username: {
           bsonType: "string",
-          description: "Username es requerido y debe ser un string",
+          description: "Username is required and needs to be string",
         },
         Email: {
           bsonType: "string",
-          description: "El email es requerido y debe ser un string",
+          description: "El email is required and needs to be string",
         },
         Password: {
           bsonType: "string",
-          description: "La password es requerida y debe ser un string",
+          description: "La password is required and needs to be string",
         },
         Rol: {
           bsonType: "string",
-          description: "El rol es requerido y debe ser un string",
-        },
-      },
-    },
-  },
-});
-
-use("Incident_Campus");
-db.createCollection("devices", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["Name", "Code", "Site"],
-      properties: {
-        Name: {
-          bsonType: "string",
-          description: "El name es requerido y debe ser un string",
-        },
-        Code: {
-          bsonType: "string",
-          description: "El code es requerido y debe ser un string",
-        },
-        Site: {
-          bsonType: "string",
-          description: "El site es requerido y debe ser un string",
+          description: "El rol is required and needs to be string",
         },
       },
     },
@@ -114,22 +90,46 @@ db.createCollection("incident", {
   },
 });
 
-use("Incident_Campus");
-db.createCollection("Site", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["Area", "Place"],
-      properties: {
-        Area: {
-          bsonType: "string",
-          description: "Area is required",
-        },
-        Place: {
-          bsonType: "string",
-          description: "Place is required",
-        },
-      },
-    },
-  },
-});
+// use("Incident_Campus");
+// db.createCollection("Site", {
+//   validator: {
+//     $jsonSchema: {
+//       bsonType: "object",
+//       required: ["Area", "Place"],
+//       properties: {
+//         Area: {
+//           bsonType: "string",
+//           description: "Area is required",
+//         },
+//         Place: {
+//           bsonType: "string",
+//           description: "Place is required",
+//         },
+//       },
+//     },
+//   },
+// });
+
+// use("Incident_Campus");
+// db.createCollection("devices", {
+//   validator: {
+//     $jsonSchema: {
+//       bsonType: "object",
+//       required: ["Name", "Code", "Site"],
+//       properties: {
+//         Name: {
+//           bsonType: "string",
+//           description: "El name is required and needs to be string",
+//         },
+//         Code: {
+//           bsonType: "string",
+//           description: "El code is required and needs to be string",
+//         },
+//         Site: {
+//           bsonType: "string",
+//           description: "El site is required and needs to be string",
+//         },
+//       },
+//     },
+//   },
+// });

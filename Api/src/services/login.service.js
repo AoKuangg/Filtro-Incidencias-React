@@ -3,7 +3,7 @@ import { ConnectDb } from "../config/connectionDB.js";
 //Sign In
 export const SignIn = async (info) => {
   let db = await ConnectDb();
-  let collection = db.collection("usuarios");
+  let collection = db.collection("users");
   let resultado = await collection
     .find({ email: info.email, password: info.password })
     .toArray();
@@ -22,7 +22,7 @@ export const SignIn = async (info) => {
 
 export const SignUp = async (info) => {
   let db = await ConnectDb();
-  let collection = db.collection("usuarios");
+  let collection = db.collection("users");
 
   let user = await collection.find({ email: info.email }).toArray();
 
