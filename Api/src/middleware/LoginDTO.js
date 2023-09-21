@@ -20,6 +20,12 @@ export const signupSchema = [
     .notEmpty()
     .isString()
     .withMessage("Please enter your password"),
-  check("Email").notEmpty().isString().withMessage("Please enter your email"),
-  check("Rol").notEmpty().isString().withMessage("Please enter your role"),
+  check("Email")
+    .notEmpty()
+    .isString()
+    .withMessage("Please enter your email"),
+  check("Rol")
+    .notEmpty()
+    .isString()
+    .withMessage("Please enter your role"),
 ];
