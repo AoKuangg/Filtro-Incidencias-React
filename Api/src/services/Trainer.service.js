@@ -1,4 +1,4 @@
-import { ConnectDb } from "../config/connectionDB";
+import { ConnectDb } from "../config/connectionDB.js";
 
 const db = await ConnectDb();
 const collection = db.collection("incident");
