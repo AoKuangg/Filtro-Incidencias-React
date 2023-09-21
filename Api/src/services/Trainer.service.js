@@ -33,19 +33,18 @@ export const GetReportByCategory = async (CATEGORY) => {
   return data;
 };
 
-
 export const ModifyReport = async (modify) => {
   const Fil = {
     Tittle: modify.Tittle,
   };
   const updata = {
-    $set:{
+    $set: {
       Severity: modify.Severity,
       State: modify.State,
-      Support:{
+      Support: {
         Username: modify.Support.Username,
       },
-    }
+    },
   };
   let data = await collection.updateOne(Fil, updata);
   return data;
