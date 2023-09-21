@@ -44,3 +44,21 @@ export const GetReportBySeverity = async (req,res)=>{
     res.status(500).json({status:500, message:"Error getting the report", error:error.message});
   }
 };
+
+export const GetReportByCategory = async (req,res)=>{
+  try {
+    let data = TrainerService.GetReportByCategory(req.params.Category);
+    res.status(200).json({status:200,message:"Success",data});
+  } catch (error) {
+    res.status(500).json({status:500, message:"Error getting the report", error:error.message});
+  }
+};
+
+export const ModifyReport = async (req,res)=>{
+  try {
+    let data = TrainerService.ModifyReport(req.body);
+    res.status(200).json({status:200,message:"Success",data});
+  } catch (error) {
+    res.status(500).json({status:500, message:"Error modifying the report", error:error.message});
+  }
+};
