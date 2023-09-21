@@ -49,6 +49,11 @@ db.createCollection("incident", {
           bsonType: "string",
           description: "Severity needs to be an string",
         },
+        State:{
+          bsonType: "string",
+          enum: ["Accepted", "Invalid"],
+          description: "State needs to be an string"
+        },
         Category: {
           bsonType: "string",
           description: "Category needs to be an string",
