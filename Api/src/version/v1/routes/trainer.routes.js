@@ -5,11 +5,11 @@ import { validationSchema } from "../../../helpers/validatorschema.js";
 const Trainer = Router();
 
 Trainer.get("/", TrainerConsulta.GetAllReports)
-  .get("/site", TrainerConsulta.GetReportsbySite)
-  .get("/camper", TrainerConsulta.GetReportByCamper)
-  .get("/date", TrainerConsulta.GetReportByDateOfIncident)
-  .get("/severity", TrainerConsulta.GetReportBySeverity)
-  .get("/category", TrainerConsulta.GetReportByCategory)
-  .put("/", TrainerConsulta.ModifyReport);
+  .get("/site/:Site", TrainerConsulta.GetReportsbySite)
+  .get("/camper/:Camper", TrainerConsulta.GetReportByCamper)
+  .get("/date/:Date", TrainerConsulta.GetReportByDateOfIncident)
+  .get("/severity:Severity", TrainerConsulta.GetReportBySeverity)
+  .get("/category/:Category", TrainerConsulta.GetReportByCategory)
+  .put("/:Tittle", TrainerConsulta.ModifyReport);
 
 export default Trainer;
