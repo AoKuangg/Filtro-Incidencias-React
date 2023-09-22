@@ -39,7 +39,7 @@ export default function Register() {
           },
         });
       } else {
-        alert("Ha ocurrido un error al registrarse");
+        console.log("No se puede registrar");
       }
     } catch (error) {
       console.log(error);

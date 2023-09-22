@@ -37,7 +37,7 @@ export default function LogIn() {
           },
         });
       } else {
-        alert("User not found");
+        console.log("Usuario no registrado");
       }
     } catch (error) {
       console.log(error);
