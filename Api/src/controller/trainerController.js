@@ -95,7 +95,7 @@ export const ModifyReport = async (req, res) => {
     let data = await TrainerService.ModifyReport({
       Tittle: req.params.Tittle,
       Severity: req.body.Severity,
-      State: req.body.State,
+      Category: req.body.Category,
       Support: {
         Username: req.body.Support.Username,
       },
