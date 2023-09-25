@@ -2,7 +2,7 @@ import * as TrainerService from "../services/Trainer.service.js";
 
 export const GetAllReports = async (req, res) => {
   try {
-    let data = TrainerService.GetAllReports();
+    let data = await TrainerService.GetAllReports();
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res
@@ -17,7 +17,7 @@ export const GetAllReports = async (req, res) => {
 
 export const GetReportsbySite = async (req, res) => {
   try {
-    let data = TrainerService.GetReportsbySite(req.params.Site);
+    let data = await TrainerService.GetReportsbySite(req.params.Site);
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res
@@ -32,7 +32,7 @@ export const GetReportsbySite = async (req, res) => {
 
 export const GetReportByCamper = async (req, res) => {
   try {
-    let data = TrainerService.GetReportByCamper(req.params.Camper);
+    let data = await TrainerService.GetReportByCamper(req.params.Camper);
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res
@@ -47,7 +47,7 @@ export const GetReportByCamper = async (req, res) => {
 
 export const GetReportByDateOfIncident = async (req, res) => {
   try {
-    let data = TrainerService.GetReportByDateOfIncident(req.params.Date);
+    let data = await TrainerService.GetReportByDateOfIncident(req.params.Date);
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res
@@ -62,7 +62,7 @@ export const GetReportByDateOfIncident = async (req, res) => {
 
 export const GetReportBySeverity = async (req, res) => {
   try {
-    let data = TrainerService.GetReportBySeverity(req.params.Severity);
+    let data = await TrainerService.GetReportBySeverity(req.params.Severity);
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res
@@ -77,7 +77,7 @@ export const GetReportBySeverity = async (req, res) => {
 
 export const GetReportByCategory = async (req, res) => {
   try {
-    let data = TrainerService.GetReportByCategory(req.params.Category);
+    let data = await TrainerService.GetReportByCategory(req.params.Category);
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res
@@ -92,7 +92,7 @@ export const GetReportByCategory = async (req, res) => {
 
 export const ModifyReport = async (req, res) => {
   try {
-    let data = TrainerService.ModifyReport({
+    let data = await TrainerService.ModifyReport({
       Tittle: req.params.Tittle,
       Severity: req.body.Severity,
       State: req.body.State,
