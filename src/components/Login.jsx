@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const SERVER = JSON.parse(import.meta.env.VITE_SERVER)
+const SERVER = JSON.parse(import.meta.env.VITE_SERVER);
 export default function LogIn() {
   let redirect = useNavigate();
   const [Email, setEmail] = useState("");
@@ -22,7 +24,10 @@ export default function LogIn() {
     config.body = JSON.stringify({ Email, Password });
     try {
       let result = await (
-        await fetch(`http://${SERVER.hostname}:${SERVER.port}/auth/signIn`, config)
+        await fetch(
+          `http://${SERVER.hostname}:${SERVER.port}/auth/signIn`,
+          config
+        )
       ).json();
 
       //IF USER NOT FOUND
@@ -37,7 +42,16 @@ export default function LogIn() {
           },
         });
       } else {
-        console.log("Usuario no registrado");
+        toast.error("🦄 User no registered!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -92,6 +106,18 @@ export default function LogIn() {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }
