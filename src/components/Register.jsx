@@ -109,7 +109,7 @@ export default function Register() {
               </select>
             </div>
             <Link
-              to="/"
+              to="/SignIn"
               className="block text-xs text-green-600 hover:underline"
             >
               SignIn
