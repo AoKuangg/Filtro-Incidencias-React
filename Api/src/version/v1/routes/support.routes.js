@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as SupportConsulta from "../../../controller/supportController.js";
-import { validationSchema } from "../../../helpers/validatorschema";
+import { validationSchema } from "../../../helpers/validatorschema.js";
 
 const Support = Router();
 

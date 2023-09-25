@@ -13,18 +13,8 @@ export const incidentSchema = [
     .isString()
     .notEmpty()
     .withMessage("Description is required"),
-  check("Severity")
-    .isString(),
-  check("Category")
-    .isString()
-    .notEmpty()
-    .withMessage("Category is required"),
   check("DateOfIncident")
     .isString()
     .notEmpty()
     .withMessage("Date of incident is required"),
-  check("Diagnosis")
-    .isString(),
-  check("State")
-    .isString(),
 ];
