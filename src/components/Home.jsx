@@ -1,23 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import NavbarPage from "./NavbarPage";
 
 export default function Home() {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+  let location = useLocation();
+  if (!location.state || !location.state.user) {
+    return null;
+  }
+  const userRole = location.state.user.Rol;
 
   return (
-    <div>
-      <div className='flex items-center justify-between px-4 py-2 bg-white border-b border-gray-200'>
-        <h1 className='text-xl font-bold'>Campuslands Incidents</h1>
-        <div className='flex items-center gap-2'>
-          <div className='flex items-center gap-1'>
-            <img className='w-8 h-8 rounded-full'/>
-            <span className='text-gray-700'></span>
-          </div>
-          <Link to='/'>
-            <button className='px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md'>Logout</button>
-          </Link>
-        </div>
-      </div>
-      <div className='p-4'>
+    <div className="">
+      <NavbarPage />
+      <div className="p-4">
         <h1>Welcome to Campuslands Incidents</h1>
         <p>This is the home page for logged-in users.</p>
       </div>
