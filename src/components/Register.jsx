@@ -33,11 +33,7 @@ export default function Register() {
         localStorage.setItem("token", result.auth);
         redirect("/home", {
           state: {
-            user: {
-              Username: result.data.Username,
-              Email: result.data.Email,
-              Rol: result.data.Rol,
-            },
+            user: result.data,
           },
         });
       } else {

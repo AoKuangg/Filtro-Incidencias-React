@@ -35,10 +35,7 @@ export default function LogIn() {
         localStorage.setItem("token", result.auth);
         redirect("/home", {
           state: {
-            user: {
-              username: result.data.username,
-              email: result.data.email,
-            },
+            user: result.data,
           },
         });
       } else {
