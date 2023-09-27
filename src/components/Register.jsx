@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SERVER = JSON.parse(import.meta.env.VITE_SERVER)
 export default function Register() {
@@ -28,7 +30,7 @@ export default function Register() {
       ).json();
 
       if (result.status === 200) {
-        localStorage.setItem("token", result.token);
+        localStorage.setItem("token", result.auth);
         redirect("/home", {
           state: {
             user: {
@@ -42,7 +44,16 @@ export default function Register() {
         console.log("No se puede registrar");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("🦄 Problem in the register!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -122,6 +133,18 @@ export default function Register() {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }
