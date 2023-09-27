@@ -12,8 +12,9 @@ export const SignIn = async (info) => {
   return [
     {
       _id: resultado[0]._id,
-      username: resultado[0].username,
-      email: resultado[0].email,
+      Username: resultado[0].Username,
+      Email: resultado[0].Email,
+      Rol: resultado[0].Rol,
     },
   ];
 };
