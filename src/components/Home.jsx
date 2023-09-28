@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavbarPage from "./NavbarPage";
+import CamperView from "./pages/CamperView";
+import TrainerView from "./pages/TrainerView";
+import SupportView from "./pages/SupportView";
 
 export default function Home() {
   const token = localStorage.getItem("token");
@@ -15,13 +18,32 @@ export default function Home() {
     return null;
   }
   const userRole = location.state.user.Rol;
+  let contentView;
+
+  switch (userRole) {
+    case "Camper":
+      contentView = <CamperView user={location.state.user}/>;
+      break;
+    case "Trainer":
+      contentView = <TrainerView/>;
+      break;
+    case "Support":
+      contentView = <SupportView/>;
+      break;
+    default:
+      contentView = null;
+      break;
+  }
 
   return (
-    <div className="">
+    <div className="bg-gray-900 text-white min-h-screen ">
       <NavbarPage />
-      <div className="p-4">
-        <h1>Welcome to Campuslands Incidents</h1>
-        <p>This is the home page for logged-in users.</p>
+      <div className="p-4 ">
+        <h1 className="text-4xl font-semibold mb-2  flex flex-col justify-center items-center">Welcome to Campuslands Incidents</h1>
+        <h3 className="text-xl  flex flex-col justify-center items-center">Hello, {location.state.user.Username}!</h3>
+        <div className="mt-4">
+          {contentView}
+        </div>
       </div>
     </div>
   );
