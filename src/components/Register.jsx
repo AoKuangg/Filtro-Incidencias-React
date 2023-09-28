@@ -37,19 +37,19 @@ export default function Register() {
           },
         });
       } else {
-        console.log("No se puede registrar");
+        toast.error("🦄 Problem in the register!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     } catch (error) {
-      toast.error("🦄 Problem in the register!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      console.log(error);
     }
   };
 
