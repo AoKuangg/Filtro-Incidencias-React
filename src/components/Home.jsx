@@ -25,7 +25,7 @@ export default function Home() {
       contentView = <CamperView user={location.state.user}/>;
       break;
     case "Trainer":
-      contentView = <TrainerView/>;
+      contentView = <TrainerView user={location.state.user}/>;
       break;
     case "Support":
       contentView = <SupportView/>;
