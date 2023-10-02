@@ -8,7 +8,7 @@ Trainer.get("/", TrainerConsulta.GetAllReports)
   .get("/site/:Site", TrainerConsulta.GetReportsbySite)
   .get("/camper/:Camper", TrainerConsulta.GetReportByCamper)
   .get("/date/:Date", TrainerConsulta.GetReportByDateOfIncident)
-  .get("/severity:Severity", TrainerConsulta.GetReportBySeverity)
+  .get("/severity/:Severity", TrainerConsulta.GetReportBySeverity)
   .get("/category/:Category", TrainerConsulta.GetReportByCategory)
   .put("/:Tittle", TrainerConsulta.ModifyReport);
 
