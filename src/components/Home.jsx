@@ -28,7 +28,7 @@ export default function Home() {
       contentView = <TrainerView user={location.state.user}/>;
       break;
     case "Support":
-      contentView = <SupportView/>;
+      contentView = <SupportView user={location.state.user}/>;
       break;
     default:
       contentView = null;
