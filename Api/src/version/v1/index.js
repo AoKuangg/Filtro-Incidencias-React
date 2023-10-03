@@ -4,13 +4,15 @@ import Camper from "./routes/camper.routes.js";
 import loginApp from "./routes/login.routes.js";
 import Trainer from "./routes/trainer.routes.js";
 import Support from "./routes/support.routes.js";
+import User from "./routes/user.routes.js";
 
 const v1Routers = Router();
-v1Routers.use(limitRequest());
+// v1Routers.use(limitRequest());
 
 v1Routers.use("/auth",loginApp);
 v1Routers.use("/CamperView",Camper);
 v1Routers.use("/TrainerView",Trainer);
 v1Routers.use("/SupportView",Support)
+v1Routers.use("/User",User);
 
 export default v1Routers;
