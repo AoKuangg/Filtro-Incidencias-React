@@ -7,32 +7,30 @@ const LogoutHanddle = () => {
 
 export default function NavbarPage() {
   return (
-    <div className="navbar rounded-lg">
-      <div className="navbar-start">
-        <a className="navbar-item">CampusLands Incidents</a>
+    <div className="navbar bg-base-100">
+      <div className="flex-1">
+        <a className="btn btn-ghost normal-case text-xl">CampusLands</a>
       </div>
-      <div className="navbar-end">
-        <div className="avatar avatar-ring avatar-md">
-          <div className="dropdown-container">
-            <div className="dropdown">
-              <label
-                className="btn btn-ghost flex cursor-pointer px-0"
-                tabIndex="0"
-              >
-                <img src="/assets/avatar.png" alt="avatar" />
-              </label>
-              <div className="dropdown-menu dropdown-menu-bottom-left">
-                <Link
-                  to="/"
-                  onClick={LogoutHanddle}
-                  tabIndex="-1"
-                  className="dropdown-item text-sm"
-                >
-                  LogOut
-                </Link>
-              </div>
+      <div className="flex-none">
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <img src="/assets/avatar.png" />
             </div>
-          </div>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <Link
+              to="/"
+              onClick={LogoutHanddle}
+              tabIndex="-1"
+              className="dropdown-item text-sm"
+            >
+              LogOut
+            </Link>
+          </ul>
         </div>
       </div>
     </div>
