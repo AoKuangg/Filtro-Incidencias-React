@@ -275,7 +275,7 @@ export default function TrainerView(props) {
     const filterUrl = selectedCamper
       ? `http://${SERVER.hostname}:${SERVER.port}/TrainerView/camper/${selectedCamper}`
       : `http://${SERVER.hostname}:${SERVER.port}/TrainerView/`;
-  
+
     fetch(filterUrl, {
       method: "GET",
       headers: {
@@ -312,7 +312,7 @@ export default function TrainerView(props) {
         });
       });
   };
-  
+
   return (
     <div className="p-4">
       <div className="mb-4">
@@ -374,36 +374,39 @@ export default function TrainerView(props) {
         </div>
       </div>
       <h2 className="text-2xl font-semibold mb-4">Lista de Reportes</h2>
-      <table className="w-full border-collapse ">
-        <thead>
-          <tr>
-            <th className="p-2 border">Title</th>
-            <th className="p-2 border">Description</th>
-            <th className="p-2 border">Severity</th>
-            <th className="p-2 border">Category</th>
-            <th className="p-2 border">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reports.map((report) => (
-            <tr key={report._id}>
-              <td className="p-2 border">{report.Tittle}</td>
-              <td className="p-2 border">{report.Description}</td>
-              <td className="p-2 border">{report.Severity}</td>
-              <td className="p-2 border">{report.Category}</td>
-              <td className="p-2 border">
-                <button
-                  className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700"
-                  onClick={() => handleEditReport(report)}
-                >
-                  Editar
-                </button>
-              </td>
+      <div className="flex w-full overflow-x-auto">
+        <table className="border-collapse table bg-stone-700">
+          <thead>
+            <tr>
+              <th className="p-2 border">Title</th>
+              <th className="p-2 border">Description</th>
+              <th className="p-2 border">Severity</th>
+              <th className="p-2 border">Category</th>
+              <th className="p-2 border">Author</th>
+              <th className="p-2 border">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
+          </thead>
+          <tbody>
+            {reports.map((report) => (
+              <tr key={report._id} className="hover:bg-zinc-700">
+                <td className="p-2 border">{report.Tittle}</td>
+                <td className="p-2 border">{report.Description}</td>
+                <td className="p-2 border">{report.Severity}</td>
+                <td className="p-2 border">{report.Category}</td>
+                <td className="p-2 border">{report.Camper.Username}</td>
+                <td className="p-2 border">
+                  <button
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700"
+                    onClick={() => handleEditReport(report)}
+                  >
+                    Editar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {/* Modal DaisyUI */}
       {isModalOpen && (
         <dialog id="my_modal_4" className="modal" open>
