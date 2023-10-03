@@ -10,6 +10,7 @@ export default function TrainerView(props) {
   const [reports, setReports] = useState([]);
   const [editingReport, setEditingReport] = useState(null);
   const [campers, setCampers] = useState([]);
+  const [supports, setSupports] = useState([]);
   // States for editing
   const [updatedSeverity, setUpdatedSeverity] = useState("");
   const [updatedCategory, setUpdatedCategory] = useState("");
@@ -32,13 +33,10 @@ export default function TrainerView(props) {
       .then((data) => {
         setReports(data.data);
 
-        // Extraer los usernames de los campers y almacenarlos en un conjunto (Set)
         const camperUsernames = new Set();
         data.data.forEach((report) => {
           camperUsernames.add(report.Camper.Username);
         });
-
-        // Convertir el conjunto a un arreglo y almacenar los usernames en el estado campers
         setCampers(Array.from(camperUsernames));
       })
       .catch((error) => {
@@ -53,7 +51,33 @@ export default function TrainerView(props) {
           theme: "colored",
         });
       });
-  }, []);
+      fetch(`http://${SERVER.hostname}:${SERVER.port}/User/`, {
+        method: "GET",
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const SupportUsernames = new Set();
+          data.data.forEach((user) => {
+            SupportUsernames.add(user.Username);
+          });
+          setSupports(Array.from(SupportUsernames));
+        })
+        .catch((error) => {
+          toast.error("Error in the fetch!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        });
+    }, []); 
   // Edit management
   const handleEditReport = (report) => {
     setEditingReport(report);
@@ -157,8 +181,8 @@ export default function TrainerView(props) {
       .then((data) => {
         setReports(data.data);
         const toastMessage = selectedSite
-          ? "Reportes filtrados por sitio."
-          : "Todos los reportes mostrados.";
+          ? "Incidents filtered by site."
+          : "All Incidents.";
         toast.success(toastMessage, {
           position: "bottom-center",
           autoClose: 5000,
@@ -200,8 +224,8 @@ export default function TrainerView(props) {
       .then((data) => {
         setReports(data.data);
         const toastMessage = selectedSeverity
-          ? "Reportes filtrados por sitio."
-          : "Todos los reportes mostrados.";
+          ? "Incidents filtered by Severity."
+          : "All Incidents.";
         toast.success(toastMessage, {
           position: "bottom-center",
           autoClose: 5000,
@@ -243,8 +267,8 @@ export default function TrainerView(props) {
       .then((data) => {
         setReports(data.data);
         const toastMessage = selectedCategory
-          ? "Reportes filtrados por sitio."
-          : "Todos los reportes mostrados.";
+          ? "Incidents filtered by Category."
+          : "All Incidents.";
         toast.success(toastMessage, {
           position: "bottom-center",
           autoClose: 5000,
@@ -286,8 +310,8 @@ export default function TrainerView(props) {
       .then((data) => {
         setReports(data.data);
         const toastMessage = selectedCamper
-          ? "Reportes filtrados por camper."
-          : "Todos los reportes mostrados.";
+          ? "Incidents filtered by Camper."
+          : "All Incidents.";
         toast.success(toastMessage, {
           position: "bottom-center",
           autoClose: 5000,
@@ -312,7 +336,6 @@ export default function TrainerView(props) {
         });
       });
   };
-
   return (
     <div className="p-4">
       <div className="mb-4">
@@ -373,7 +396,7 @@ export default function TrainerView(props) {
           </select>
         </div>
       </div>
-      <h2 className="text-2xl font-semibold mb-4">Lista de Reportes</h2>
+      <h2 className="text-2xl font-semibold mb-4">Lista of Incidents</h2>
       <div className="flex w-full overflow-x-auto">
         <table className="border-collapse table bg-stone-700">
           <thead>
@@ -399,7 +422,7 @@ export default function TrainerView(props) {
                     className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700"
                     onClick={() => handleEditReport(report)}
                   >
-                    Editar
+                    Edit
                   </button>
                 </td>
               </tr>
@@ -432,13 +455,20 @@ export default function TrainerView(props) {
                 <option value="Digital">Digital</option>
                 <option value="Physical">Physical</option>
               </select>
-              <input
-                type="text"
-                placeholder="Nuevo Username de Support"
+              <select
+                name="Support"
                 value={updatedSupportUsername}
                 onChange={(e) => setUpdatedSupportUsername(e.target.value)}
                 className="w-full px-2 py-1 border rounded"
-              />
+                required
+              >
+                <option value="">Select Support</option>
+                {supports.map((support, index) => (
+                  <option key={index} value={support}>
+                    {support}
+                  </option>
+                ))}
+              </select>
               <div className="modal-action">
                 <button className="btn" onClick={closeModal}>
                   Cerrar
