@@ -13,8 +13,9 @@ export default function CamperView(props) {
     Site: "",
     Description: "",
     DateOfIncident: "",
-    Category: "Digital",
-    Severity: "Mild",
+    Category: "",
+    Severity: "",
+    Status:"Not solved",
   });
 
   const handleChange = (e) => {
@@ -60,6 +61,15 @@ export default function CamperView(props) {
           draggable: true,
           progress: undefined,
           theme: "dark",
+        });
+        setFormData({
+          Tittle: "",
+          Site: "",
+          Description: "",
+          DateOfIncident: "",
+          Category: "",
+          Severity: "",
+          Status: "Not solved",
         });
       } else {
         toast.error("Error adding the report!", {
@@ -151,6 +161,7 @@ export default function CamperView(props) {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
               required
             >
+              
               <option value="">Select Category</option>
               <option value="Physical">Physical</option>
               <option value="Digital">Digital</option>
@@ -173,10 +184,10 @@ export default function CamperView(props) {
               <option value="Critical">Critical</option>
             </select>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between text-center">
             <button
               type="submit"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto"
             >
               Submit
             </button>
