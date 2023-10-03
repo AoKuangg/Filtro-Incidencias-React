@@ -23,5 +23,5 @@ export default {
       // => @media (min-width: 1536px) { ... }
     }
   },
-  plugins: [require("rippleui")],
+  plugins: [require("rippleui"),require("daisyui")],
 }
