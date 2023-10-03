@@ -2,7 +2,7 @@ import * as SupportService from "../services/Support.service.js";
 
 export const GetReportsBySupport = async (req, res) => {
   try {
-    let data = SupportService.GetReportsBySupport(req.params.Support);
+    let data = await SupportService.GetReportsBySupport(req.params.Support);
     res.status(200).json({ status: 200, message: "Success", data });
   } catch (error) {
     res.status(500).json({
@@ -15,13 +15,12 @@ export const GetReportsBySupport = async (req, res) => {
 
 export const ModifyReports = async (req, res) => {
   try {
-    let data = SupportService.ModifyReports({
+    let data = await SupportService.ModifyReports({
       Tittle: req.params.Tittle,
       Support: {
-        Username: req.body.Username,
         Diagnosis: req.body.Diagnosis,
-        Status: req.body.Status,
       },
+      Status: req.body.Status,
     });
     res.status(200).json({ status: 200, message: "Success" });
   } catch (error) {

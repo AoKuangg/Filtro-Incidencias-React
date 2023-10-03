@@ -15,10 +15,9 @@ export const ModifyReports = async(update)=>{
       const updata = {
         $set:{
           Support:{
-            Username: update.Support.Username,
-            Diagnosis: update.Support.Diagnosis,
-            Status: update.Support.Status,
+            Diagnosis: update.Support.Diagnosis,  
           },
+          Status: update.Status,
         }
       };
       let data = await collection.updateOne(Fil, updata);
