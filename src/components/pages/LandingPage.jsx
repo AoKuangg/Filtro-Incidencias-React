@@ -17,9 +17,7 @@ const LandingPage = () => {
               Welcome to the Campuslands Incident Management
             </h1>
             <p className="mt-4 text-xl md:text-xl lg:text-2xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse iaculis magna eget mi tincidunt, eget congue est
-              scelerisque.
+              On this page you will be able to report campus incidents.
             </p>
           </div>
         </div>
