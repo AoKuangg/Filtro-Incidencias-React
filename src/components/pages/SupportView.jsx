@@ -37,13 +37,14 @@ export default function SupportView(props) {
         });
       });
   }, []);
+
   const handleEditReport = (report) => {
     setEditingReport(report);
     setUpdatedDiagnosis(report.Support.Diagnosis);
     setUpdatedStatus(report.Status);
     setIsModalOpen(true);
-    setIsModalOpen(true);
   };
+
   const handleSaveReport = (e) => {
     e.preventDefault();
     fetch(
@@ -105,12 +106,21 @@ export default function SupportView(props) {
         });
       });
   };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  // Separa los informes en dos grupos: "Finished" y no "Finished"
+  const finishedReports = reports.filter((report) => report.Status === "Finished");
+  const nonFinishedReports = reports.filter((report) => report.Status !== "Finished");
+
+  // Concatena los informes de manera que primero aparezcan los no "Finished" y luego los "Finished"
+  const sortedReports = [...nonFinishedReports, ...finishedReports];
 
   return (
     <div>
@@ -129,7 +139,7 @@ export default function SupportView(props) {
             </tr>
           </thead>
           <tbody>
-            {reports.map((report) => (
+            {sortedReports.map((report) => (
               <tr key={report._id} className="hover:bg-zinc-700">
                 <td className="p-2 border">{report.Tittle}</td>
                 <td className="p-2 border">{report.Description}</td>
