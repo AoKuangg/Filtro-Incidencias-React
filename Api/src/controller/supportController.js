@@ -18,11 +18,11 @@ export const ModifyReports = async (req, res) => {
     let data = await SupportService.ModifyReports({
       Tittle: req.params.Tittle,
       Support: {
-        Diagnosis: req.body.Diagnosis,
+        Diagnosis: req.body.Support.Diagnosis,
       },
       Status: req.body.Status,
     });
-    res.status(200).json({ status: 200, message: "Success" });
+    res.status(200).json({ status: 200, message: "Success", data:data });
   } catch (error) {
     res.status(500).json({
       status: 500,

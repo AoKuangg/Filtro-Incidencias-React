@@ -8,18 +8,16 @@ export const GetReportsBySupport = async(Support)=>{
     return data;
 };
 
-export const ModifyReports = async(update)=>{
-    const Fil = {
-        Tittle: update.Tittle,
-      };
-      const updata = {
-        $set:{
-          Support:{
-            Diagnosis: update.Support.Diagnosis,  
-          },
-          Status: update.Status,
-        }
-      };
-      let data = await collection.updateOne(Fil, updata);
-      return data;
+export const ModifyReports = async (update) => {
+  const filter = {
+    Tittle: update.Tittle,
+  };
+  const updateData = {
+    $set: {
+      'Support.Diagnosis': update.Support.Diagnosis,
+      Status: update.Status,
+    },
+  };
+  let data = await collection.updateOne(filter, updateData);
+  return data;
 };
