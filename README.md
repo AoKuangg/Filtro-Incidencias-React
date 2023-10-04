@@ -61,7 +61,7 @@ Enjoy using the CampusLands Incidents, and feel free to explore the different fe
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
 
 ## Author
 [Camilo Paez](https://github.com/AoKuangg)
