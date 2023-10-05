@@ -59,6 +59,10 @@ To get started with the CampusLands Incidents, follow these steps:
 Enjoy using the CampusLands Incidents, and feel free to explore the different features based on your role!
 
 
+
+## Notion
+[Incidents](https://www.notion.so/Incidences-e840756678aa43f6be351ee573ec0ed7?pvs=4)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
