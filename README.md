@@ -42,6 +42,8 @@ CampusLands Incidents is a web application that enables campers to create new in
 
 ## Data Base
 Imagen of the data base:
+
+
 ![](./public//assets//DataBase.png)
 ## Usage
 
