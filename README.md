@@ -40,7 +40,9 @@ CampusLands Incidents is a web application that enables campers to create new in
 5. Start the server: `npm run start`
 6. Start the frontend: `npm run dev`
 
-
+## Data Base
+Imagen of the data base:
+![](./public//assets//DataBase.png)
 ## Usage
 
 To get started with the CampusLands Incidents, follow these steps:
